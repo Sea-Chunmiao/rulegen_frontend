@@ -25,6 +25,7 @@ st.markdown('This is a workbench for predicting missing TXL rules. You can uploa
 
 # sidebar()
 
+# ---------------------
 st.markdown("## Code before")
 def clear_submit():
     st.session_state["submit"] = False
@@ -39,15 +40,11 @@ uploaded_before_file = st.file_uploader(
 
 before_doc = None
 if uploaded_before_file is not None:
-    # if uploaded_before_file.name.endswith(".pdf"):
-    #     doc = parse_pdf(uploaded_before_file)
-    # elif uploaded_before_file.name.endswith(".docx"):
-    #     doc = parse_docx(uploaded_before_file)
     if uploaded_before_file.name.endswith(".txt"):
-        before_doc = parse_txt(uploaded_before_file)
+        before_text = uploaded_before_file.read().decode("utf-8")
+        st.write(before_text)
     else:
         raise ValueError("File type not supported!")
-    # before_text = text_to_docs(before_doc)
 
 before_input_text = st.text_area("OR you can input the code here", key="before", on_change=clear_submit)
 # ---------------------------
@@ -64,10 +61,10 @@ uploaded_after_file = st.file_uploader(
 after_doc = None
 if uploaded_after_file is not None:
     if uploaded_after_file.name.endswith(".txt"):
-        after_doc = parse_txt(uploaded_after_file)
+        after_text = uploaded_after_file.read().decode("utf-8")
+        st.write(after_text)
     else:
         raise ValueError("File type not supported!")
-    # after_text = text_to_docs(after_doc)
 
 after_input_text = st.text_area("OR you can input the code here", key="after", on_change=clear_submit)
 # ---------------------------
@@ -84,14 +81,13 @@ uploaded_context_file = st.file_uploader(
 context_doc = None
 if uploaded_context_file is not None:
     if uploaded_context_file.name.endswith(".txt"):
-        context_doc = parse_txt(uploaded_context_file)
+        context_text = uploaded_context_file.read().decode("utf-8")
+        st.write(context_text)
     else:
         raise ValueError("File type not supported!")
-    # context_text = text_to_docs(context_doc)
 
 context_input_text = st.text_area("OR you can input the code here", key="context", on_change=clear_submit)
-
-
+# ---------------------------
 # Use local CSS
 def local_css(file_name):
     with open(file_name) as f:
@@ -146,6 +142,8 @@ data_inf = pd.DataFrame([data_inf])
 
 if submitted:
     st.write('## The predicted missing rule is as below: ')
+    missing_rule="nihao"
+    st.download_button('download the predicted missing rule', missing_rule)
    # Predict using model (Nghi)
 #    y_pred_inf = model.predict(data_inf)
 #    st.write('## Iris Variety = '+ str(y_pred_inf))
