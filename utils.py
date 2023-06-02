@@ -2,8 +2,8 @@ import re
 from io import BytesIO
 import streamlit as st
 from typing import Any, Dict, List
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.docstore.document import Document
+# from langchain.text_splitter import RecursiveCharacterTextSplitter
+# from langchain.docstore.document import Document
 
 
 @st.cache_data()
