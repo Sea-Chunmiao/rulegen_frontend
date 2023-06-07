@@ -91,7 +91,7 @@ with outer_cols[1]:
         else:
             raise ValueError("File type not supported!")
 
-    context_input_text = st.text_area("OR you can input the code here", height=100, key="context", on_change=clear_submit)
+    context_input_text = st.text_area("OR you can input the code here", height=10, key="context", on_change=clear_submit)
 # ---------------------------
 # Use local CSS
 def local_css(file_name):
