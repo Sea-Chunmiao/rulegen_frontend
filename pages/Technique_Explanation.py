@@ -10,8 +10,6 @@ st.write("This demo leverages machine learning models to automatically \
     rule c with the existing context rule set C, can successfully transform \
         the given **code before** into the desired **code after**. ")
 
-# 我解释c2rust dataset collection;发给Nghi
-
 st.markdown("## 1. Dataset Collection")
 st.write("We initially gathered triplets comprising of **(code before, code after, TXL rules)**, \
     where the TXL rules are capable of transforming the **code before** into the **code after**. \
